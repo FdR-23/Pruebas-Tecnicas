@@ -9,7 +9,7 @@ export interface InitialState {
 }
 export interface Action {
     type: string,
-    payload: unknown,
+    payload: any,
 }
 
 const localStorageBooks: string | null = window.localStorage.getItem('books')
