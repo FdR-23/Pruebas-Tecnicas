@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import useBookContext from '../hooks/useBookContext';
 import { TYPE } from '../redux/action';
 import { Book as Booktype } from '../type';
+
 type BookProps = {
     book: Booktype,
     loading: boolean;
 }
 
 const Book: React.FC<BookProps> = ({ book, loading }) => {
+    console.log(loading)
     const { dispatch } = useBookContext() as { dispatch: React.Dispatch<any> };
     const modalRef = useRef<HTMLElement | null>(null);
     const [toggle, setToggles] = useState(false)
@@ -20,7 +22,8 @@ const Book: React.FC<BookProps> = ({ book, loading }) => {
         })
     }
     useEffect(() => {
-        const handleClickOutside = (event) => {
+
+        const handleClickOutside = (event: { target: any; }) => {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
                 setToggles((prev) => prev ? false : true)
             }
