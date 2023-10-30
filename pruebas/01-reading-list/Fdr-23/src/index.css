@@ -8,10 +8,27 @@
   }
 
 #root {
-    @apply flex flex-col relative min-h-screen scroll-smooth bg-[#E9E4ED] font-permanent_marker
-   
+    @apply flex flex-col relative min-h-screen scroll-smooth bg-white font-permanent_marker
   }
 
   body {
-    @apply max-w-screen-xl m-auto relative
+    @apply  lg:max-w-screen-lg xl:max-w-screen-xl  m-auto relative bg-[#ebebeb]
+  }
+
+  #journal-scroll::-webkit-scrollbar {
+    width: 4px;
+    cursor: pointer;
+    /*background-color: rgba(229, 231, 235, var(--bg-opacity));*/
+  }
+  
+  #journal-scroll::-webkit-scrollbar-track {
+    background-color: rgba(229, 231, 235, 50%);
+    cursor: pointer;
+    /*background: red;*/
+  }
+  
+  #journal-scroll::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color: #53575c;
+    /*outline: 1px solid slategrey;*/
   }

@@ -18,10 +18,10 @@ const localStorageListLecture: string | null = window.localStorage.getItem('list
 const storageListLecture = localStorageListLecture ? JSON.parse(localStorageListLecture) : null;
 
 export const initialState: InitialState = {
-    books: storageBooks ? storageBooks : [],
+    books: storageBooks ?? [],
     copyBooks: [],
     genre: [],
-    listOfLecture: storageListLecture ? storageListLecture : [],
+    listOfLecture: storageListLecture ?? [],
 }
 
 const reducer = (state = initialState, action: Action) => {
@@ -39,6 +39,12 @@ const reducer = (state = initialState, action: Action) => {
                 genre: action.payload
             }
         }
+        case TYPE.SET_LIST_LECTURE: {
+            return {
+                ...state,
+                listOfLecture: action.payload
+            }
+        }
         case TYPE.FILTER_BY_GENRE: {
             const copyState = state.copyBooks;
             const booksFiltered = copyState.filter((book) =>
@@ -50,7 +56,16 @@ const reducer = (state = initialState, action: Action) => {
                 books: booksFiltered
             }
         }
-        case TYPE.ADD_LIST: {
+        case TYPE.FILTER_BY_PAGE: {
+            const books = state.copyBooks;
+            const booksFilteredByPage = books.filter((book) => book.pages <= action.payload)
+            //console.log(books)
+            return {
+                ...state,
+                books: booksFilteredByPage
+            }
+        }
+        case TYPE.ADD_LIST_LECTURE: {
             const books = state.books;
             const listLecture = state.listOfLecture;
             const foundBook = books.find((book) => book.ISBN === action.payload);

@@ -23,7 +23,8 @@ export const getAllBooks = (): Promise<BooksResponse> => {
                 console.log(error)
                 reject(error)
             }
-        }, 1000);
+        }, 500);
     })
 
 }
+

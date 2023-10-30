@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 import { Action } from "../redux/reducer";
 
 export type GlobalContent = {
-    state: unknown,
+    state: any,
     dispatch: React.Dispatch<Action>
 }
 
